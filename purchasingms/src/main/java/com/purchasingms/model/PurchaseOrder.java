@@ -1,25 +1,26 @@
 package com.purchasingms.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import jakarta.persistence.PrePersist;
-import lombok.*;
+import jakarta.persistence.*;
+
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 
+@Entity
+@Table(name = "tb_purchase_order")
 public class PurchaseOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
     private String name;
     private Long product;
-    private BigDecimal value;
+    private BigDecimal purchaseValue;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate datePurchase;
@@ -29,6 +30,14 @@ public class PurchaseOrder implements Serializable {
     @PrePersist
     public void prePersist(){
         setDatePurchase(LocalDate.now());
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
     }
 
     public String getName() {
@@ -47,12 +56,12 @@ public class PurchaseOrder implements Serializable {
         this.product = product;
     }
 
-    public BigDecimal getValue() {
-        return value;
+    public BigDecimal getPurchaseValue() {
+        return purchaseValue;
     }
 
-    public void setValue(BigDecimal value) {
-        this.value = value;
+    public void setPurchaseValue(BigDecimal purchaseValue) {
+        this.purchaseValue = purchaseValue;
     }
 
     public LocalDate getDatePurchase() {

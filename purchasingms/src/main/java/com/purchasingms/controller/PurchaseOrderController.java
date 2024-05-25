@@ -3,6 +3,7 @@ package com.purchasingms.controller;
 import com.purchasingms.dto.PurchaseOrderDTO;
 import com.purchasingms.model.PurchaseOrder;
 import com.purchasingms.service.PurchaseOrderService;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ public class PurchaseOrderController {
     }
 
     @PostMapping
-    public ResponseEntity<PurchaseOrder> save(@RequestBody PurchaseOrderDTO purchaseOrderDTO){
+    public ResponseEntity<PurchaseOrder> save(@RequestBody @Valid PurchaseOrderDTO purchaseOrderDTO){
         var purchaseOrder = new PurchaseOrder();
         BeanUtils.copyProperties(purchaseOrderDTO, purchaseOrder);
 

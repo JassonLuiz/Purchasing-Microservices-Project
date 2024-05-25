@@ -17,7 +17,7 @@ public class PurchaseOrder implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private String name;
     private Long product;
     private BigDecimal purchaseValue;
@@ -33,11 +33,11 @@ public class PurchaseOrder implements Serializable {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {

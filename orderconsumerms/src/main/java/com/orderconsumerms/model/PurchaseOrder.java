@@ -1,7 +1,4 @@
-package com.purchasingms.model;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
+package com.orderconsumerms.model;
 
 
 import java.io.Serializable;
@@ -9,28 +6,21 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
-@Entity
-@Table(name = "tb_purchase_order")
 public class PurchaseOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String name;
     private Long product;
+
     private BigDecimal purchaseValue;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate datePurchase;
     private String cpfClient;
     private String cep;
 
-    @PrePersist
-    public void prePersist(){
-        setDatePurchase(LocalDate.now());
-    }
 
     public Long getId() {
         return id;

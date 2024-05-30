@@ -12,6 +12,7 @@ public class PurchaseOrder implements Serializable {
 
 
     private Long id;
+   // private String email;
     private String name;
     private Long product;
 
@@ -82,6 +83,7 @@ public class PurchaseOrder implements Serializable {
     public String toString() {
         return "PurchaseOrder{" +
                 "id=" + id +
+               // ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", product=" + product +
                 ", purchaseValue=" + purchaseValue +

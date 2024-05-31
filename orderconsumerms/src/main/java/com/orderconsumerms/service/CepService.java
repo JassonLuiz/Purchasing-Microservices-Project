@@ -23,10 +23,19 @@ public class CepService {
             return Mono.error(new IllegalArgumentException("CEP cannot be null or empty"));
         }
 
+        long startTime = System.currentTimeMillis();
+        log.info("Iniciando busca pelo CEP: {}", cep);
+
         Mono<Address> addressMono = webClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/{cep}/json").build(cep))
                 .retrieve()
-                .bodyToMono(Address.class);
+                .bodyToMono(Address.class)
+                .doOnNext(address -> log.info("Endereço encontrado: {}", address))
+                .doOnError(error -> log.error("Erro ao buscar o endereço para o CEP: {}", cep, error))
+                .doOnTerminate(() -> {
+                    long endTime = System.currentTimeMillis();
+                    log.info("Busca pelo CEP {} concluída em {} ms", cep, (endTime - startTime));
+                });
 
         return addressMono;
     }

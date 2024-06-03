@@ -18,6 +18,9 @@ public class PurchaseOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String email;
+
     private String name;
     private Long product;
     private BigDecimal purchaseValue;
@@ -34,6 +37,14 @@ public class PurchaseOrder implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setId(Long id) {
@@ -92,6 +103,7 @@ public class PurchaseOrder implements Serializable {
     public String toString() {
         return "PurchaseOrder{" +
                 "id=" + id +
+                ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", product=" + product +
                 ", purchaseValue=" + purchaseValue +

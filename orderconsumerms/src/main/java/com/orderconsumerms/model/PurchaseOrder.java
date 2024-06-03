@@ -10,9 +10,8 @@ public class PurchaseOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
     private Long id;
-   // private String email;
+    private String email;
     private String name;
     private Long product;
 
@@ -29,6 +28,14 @@ public class PurchaseOrder implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -83,7 +90,7 @@ public class PurchaseOrder implements Serializable {
     public String toString() {
         return "PurchaseOrder{" +
                 "id=" + id +
-               // ", email='" + email + '\'' +
+                ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", product=" + product +
                 ", purchaseValue=" + purchaseValue +

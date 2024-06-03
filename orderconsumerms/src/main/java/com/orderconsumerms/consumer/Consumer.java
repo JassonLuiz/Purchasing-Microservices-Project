@@ -22,6 +22,6 @@ public class Consumer {
     @RabbitListener(queues = {"${broker.queue.purchase.name}"})
     public void consumer(@Payload PurchaseOrder purchaseOrder){
         log.info("Request received: {}", purchaseOrder);
-        emailService.notifyCustomer("jassonluizjr@gmail.com");
+        emailService.notifyCustomer(purchaseOrder.getEmail());
     }
 }

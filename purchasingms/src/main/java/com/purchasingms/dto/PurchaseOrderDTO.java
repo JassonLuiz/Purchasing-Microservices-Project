@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record PurchaseOrderDTO(@NotBlank(message = "{NotBlank.purchaseOrder.name}") String name,
+                               @NotBlank(message = "{NotBlank.purchaseOrder.email}") String email,
                                @NotNull(message = "{NotNull.purchaseOrder.product}") @Min(1) Long product,
                                @NotNull(message = "{NotNull.purchaseOrder.purchaseValue}") @Min(1) BigDecimal purchaseValue,
                                @NotBlank(message = "{NotBlank.purchaseOrder.cpfClient}") String cpfClient,

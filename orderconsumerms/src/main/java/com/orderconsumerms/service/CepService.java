@@ -24,17 +24,17 @@ public class CepService {
         }
 
         long startTime = System.currentTimeMillis();
-        log.info("Iniciando busca pelo CEP: {}", cep);
+        log.info("Starting search by zip code: {}", cep);
 
         Mono<Address> addressMono = webClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/{cep}/json").build(cep))
                 .retrieve()
                 .bodyToMono(Address.class)
-                .doOnNext(address -> log.info("Endereço encontrado: {}", address))
-                .doOnError(error -> log.error("Erro ao buscar o endereço para o CEP: {}", cep, error))
+                .doOnNext(address -> log.info("Address found: {}", address))
+                .doOnError(error -> log.error("Error when searching for address for zip code: {}", cep, error))
                 .doOnTerminate(() -> {
                     long endTime = System.currentTimeMillis();
-                    log.info("Busca pelo CEP {} concluída em {} ms", cep, (endTime - startTime));
+                    log.info("Search by zip code {} completed in {} ms", cep, (endTime - startTime));
                 });
 
         return addressMono;

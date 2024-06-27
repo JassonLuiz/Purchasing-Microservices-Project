@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
 
-    @Value("${broker.queue.purchase.name}")
+    @Value("${broker.queue.pending.purchase.name}")
     private String queue;
 
     @Bean

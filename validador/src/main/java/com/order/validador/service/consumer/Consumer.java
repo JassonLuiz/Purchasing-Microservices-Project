@@ -1,6 +1,8 @@
 package com.order.validador.service.consumer;
 
 import com.order.validador.model.PurchaseOrder;
+import com.order.validador.service.Exceptions.InsufficientFundsException;
+import com.order.validador.service.Exceptions.LimitUnavailableException;
 import com.order.validador.service.ValidadorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +29,7 @@ public class Consumer {
 
         try {
             validadorService.validateOrder(purchaseOrder);
-        } catch (Exception e) {
+        } catch (LimitUnavailableException | InsufficientFundsException e) {
             e.printStackTrace();
         }
     }

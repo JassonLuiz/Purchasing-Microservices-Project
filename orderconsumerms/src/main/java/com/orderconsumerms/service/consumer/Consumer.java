@@ -1,4 +1,4 @@
-package com.orderconsumerms.consumer;
+package com.orderconsumerms.service.consumer;
 
 import com.orderconsumerms.model.PurchaseOrder;
 import com.orderconsumerms.service.EmailService;
@@ -22,6 +22,6 @@ public class Consumer {
     @RabbitListener(queues = {"${broker.queue.purchase.name}"})
     public void consumer(@Payload PurchaseOrder purchaseOrder){
         log.info("Request received: {}", purchaseOrder);
-        emailService.notifyCustomer(purchaseOrder.getEmail());
+        emailService.notifyCustomer(purchaseOrder);
     }
 }

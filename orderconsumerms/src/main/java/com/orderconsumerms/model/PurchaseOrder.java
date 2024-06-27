@@ -21,6 +21,8 @@ public class PurchaseOrder implements Serializable {
     private String cpfClient;
     private String cep;
 
+    private Card card;
+
 
     public Long getId() {
         return id;
@@ -86,6 +88,14 @@ public class PurchaseOrder implements Serializable {
         this.cep = cep;
     }
 
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
     @Override
     public String toString() {
         return "PurchaseOrder{" +
@@ -97,6 +107,7 @@ public class PurchaseOrder implements Serializable {
                 ", datePurchase=" + datePurchase +
                 ", cpfClient='" + cpfClient + '\'' +
                 ", cep='" + cep + '\'' +
+                ", card=" + card +
                 '}';
     }
 }

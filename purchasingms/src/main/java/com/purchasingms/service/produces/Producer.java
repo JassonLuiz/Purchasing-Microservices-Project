@@ -1,4 +1,4 @@
-package com.purchasingms.produces;
+package com.purchasingms.service.produces;
 
 import com.purchasingms.model.PurchaseOrder;
 import org.springframework.amqp.core.Queue;

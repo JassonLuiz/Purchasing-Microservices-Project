@@ -1,8 +1,9 @@
 package com.purchasingms.service;
 
 import com.purchasingms.model.PurchaseOrder;
-import com.purchasingms.produces.Producer;
+import com.purchasingms.service.produces.Producer;
 import com.purchasingms.repository.PurchaseOrderRepository;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,4 +25,13 @@ public class PurchaseOrderService {
         return purchaseOrder;
     }
 
+    public PurchaseOrder findById(Long id) throws Exception {
+        return purchaseOrderRepository.findById(id)
+                .orElseThrow(() -> new Exception("Purchase order not found!"));
+    }
+
+    public void delete(Long id) throws Exception {
+        var purchase = findById(id);
+        purchaseOrderRepository.deleteById(id);
+    }
 }

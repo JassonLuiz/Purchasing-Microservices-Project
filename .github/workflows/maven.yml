@@ -13,6 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: List files in the root directory
+      run: ls -la
+
+    - name: List files in the purchasingms directory
+      run: ls -la ./purchasingms
+      
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:

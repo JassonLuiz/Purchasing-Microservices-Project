@@ -10,8 +10,6 @@ services:
       - "8080:8080"
     depends_on:
       - rabbitmq
-    networks:
-      host:
 
   rabbitmq:
     restart: always
@@ -19,8 +17,4 @@ services:
     ports:
       - '5672:5672'
       - '15672:15672'
-    networks:
-      host:
 
-networks:
-  host:

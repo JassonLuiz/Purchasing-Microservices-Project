@@ -1,5 +1,6 @@
 package com.purchasingms.service;
 
+import com.purchasingms.exceptions.PurchaseOrderNotFoundException;
 import com.purchasingms.model.PurchaseOrder;
 import com.purchasingms.service.produces.Producer;
 import com.purchasingms.repository.PurchaseOrderRepository;
@@ -27,7 +28,7 @@ public class PurchaseOrderService {
 
     public PurchaseOrder findById(Long id) throws Exception {
         return purchaseOrderRepository.findById(id)
-                .orElseThrow(() -> new Exception("Purchase order not found!"));
+                .orElseThrow(() -> new PurchaseOrderNotFoundException("Purchase order not found!"));
     }
 
     public void delete(Long id) throws Exception {

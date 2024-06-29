@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/v1/PurchaseOrder")
@@ -27,5 +29,11 @@ public class PurchaseOrderController {
         BeanUtils.copyProperties(purchaseOrderDTO, purchaseOrder);
 
         return ResponseEntity.ok(purchaseOrderService.save(purchaseOrder));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PurchaseOrder> findById(@PathVariable Long id) throws Exception {
+        PurchaseOrder purchaseOrder = purchaseOrderService.findById(id);
+        return ResponseEntity.ok(purchaseOrder);
     }
 }

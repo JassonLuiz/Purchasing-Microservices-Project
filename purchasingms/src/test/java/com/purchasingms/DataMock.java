@@ -1,5 +1,6 @@
 package com.purchasingms;
 
+import com.purchasingms.dto.PurchaseOrderDTO;
 import com.purchasingms.model.PurchaseOrder;
 
 import java.math.BigDecimal;
@@ -17,6 +18,18 @@ public class DataMock {
         purchaseOrder.setCep("12345678");
         purchaseOrder.setEmail("jassonluiz@hotmail.com");
 
+        return purchaseOrder;
+    }
+
+    public PurchaseOrderDTO getPurchaseOrderDTO(){
+        var purchaseOrder = new PurchaseOrderDTO(
+                "Jasson Luiz",
+                "jassonluiz@hotmail.com",
+                1L,
+                BigDecimal.TEN,
+                "111.222.333-40",
+                "12345678"
+        );
         return purchaseOrder;
     }
 }
